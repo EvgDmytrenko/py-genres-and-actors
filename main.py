@@ -6,3 +6,4 @@ from django.db.models import QuerySet
 def main() -> QuerySet:
     pass
     pass
+    pass
