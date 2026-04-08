@@ -13,7 +13,7 @@ def main() -> QuerySet:
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
-        ("Scarlett ", "Keegan"),
+        ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
@@ -33,14 +33,13 @@ def main() -> QuerySet:
     # UPDATE
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu", last_name="Reeves")
+    actor = Actor.objects.filter(first_name="Kianu")
+    actor.update(first_name="Keanu", last_name="Reeves")
 
     # DELETE
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # RETURN
-    actors = Actor.objects.filter(last_name="Smith").order_by("first_name").all()
-    print(actors)
-
-
+    actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    return actors.all()
